@@ -3,9 +3,11 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: "DESC")
   end
 
+  #メモ作成時に未読の情報を保存するようにした
+  #レスポンスをjsonにした
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index
+    Post.create(content: params[:content], checked: false)
+    render json:{ post: post }
   end
 
   def checked
