@@ -5,7 +5,8 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <div class="post">
+  <%#クリックしたメモがどのメモなのかを判別するための情報をリクエストに含めるためのカスタムデータ属性%>
+  <div class="post" data-id=<%= post.id %> data-check=<%= post.checked %>> 
     <div class="post-date">
       投稿日時：<%= post.created_at %>
     </div>
